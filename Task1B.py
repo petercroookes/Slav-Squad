@@ -8,7 +8,7 @@ def run():
 
     station_town_distance = []
     for i in stations_sorted:
-        station_town_distance += [(i[0].name, i[0].town, i[1])]
+        station_town_distance.append([(i[0].name, i[0].town, i[1])])
     
     furthest_stations = station_town_distance[-10:]
     closest_stations = station_town_distance[:10]
