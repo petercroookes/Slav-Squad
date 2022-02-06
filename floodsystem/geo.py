@@ -5,6 +5,7 @@
 geographical data.
 
 """
+
 def distance_conversion(coordinate_1, coordinate_2):
     latitude_1, longitude_1 = coordinate_1
     latitude_2, longitude_2 = coordinate_2
@@ -13,7 +14,7 @@ def distance_conversion(coordinate_1, coordinate_2):
     longitude_1 *= pi / 180
     longitude_2 *= pi / 180
     return 6378.7 * acos(sin(latitude_1) * sin(latitude_2) + cos(latitude_1)*cos(latitude_2)*cos(longitude_2-longitude_1))
-#from haversine import haversine, Unit
+
 def sorted_by_key(x, i, reverse=False):
     """For a list of lists/tuples, return list sorted by the ith
     component of the list/tuple, E.g.
@@ -51,6 +52,8 @@ def stations_by_distance(stations, p):
     return sorted(list_of_stations, key=lambda x: x[1])
 
 from math import pi, sin, cos, acos
+
+from sklearn.decomposition import DictionaryLearning
 
 
 
@@ -100,3 +103,21 @@ def rivers_by_station_number(stations, N):
             river_N_numbers.append(river)
     return river_N_numbers
 
+def rivers_with_station(stations):
+    river_set = []
+    for n in stations:
+        river_set.append(n.river)
+    
+    return set(river_set)
+
+def stations_by_river(stations):
+    river_station_dictionary = {}
+    for n in rivers_with_station(stations):
+        stations_on_river = []
+        for i in stations:
+            if i.river == n:
+                stations_on_river.append(i.name)
+    
+        river_station_dictionary[n] = stations_on_river
+
+    return river_station_dictionary
