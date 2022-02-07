@@ -55,10 +55,6 @@ from math import pi, sin, cos, acos
 
 from sklearn.decomposition import DictionaryLearning
 
-
-
-
-
 def stations_within_radius(stations, centre, r):
     output = []
     for station in stations:
@@ -110,14 +106,3 @@ def rivers_with_station(stations):
     
     return set(river_set)
 
-def stations_by_river(stations):
-    river_station_dictionary = {}
-    for n in rivers_with_station(stations):
-        stations_on_river = []
-        for i in stations:
-            if i.river == n:
-                stations_on_river.append(i.name)
-    
-        river_station_dictionary[n] = stations_on_river
-
-    return river_station_dictionary

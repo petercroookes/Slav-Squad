@@ -1,4 +1,4 @@
-from floodsystem.geo import stations_by_river
+from floodsystem.geo import stations_next_to_river
 from floodsystem.geo import rivers_with_station
 from floodsystem.stationdata import build_station_list
 
@@ -19,6 +19,8 @@ def run2():
     print("Stations on River Cam in Alphabetical Order:",sorted(River_Cam))
     print("Stations on River Thames in Alphabetical Order:",sorted(River_Thames))
 
-run1()
-run2()
+if __name__ == "__main__":
+    print("*** Task 1D: CUED Part IA Flood Warning System ***")
+    run1()
+    run2()
     

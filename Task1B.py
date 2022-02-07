@@ -17,5 +17,7 @@ def run():
     print("10 Stations Closest to Cambridge:",closest_stations)
 
 
-run()
+if __name__ == "__main__":
+    print("*** Task 1B: CUED Part IA Flood Warning System ***")
+    run()
         
