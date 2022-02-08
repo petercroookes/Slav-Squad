@@ -25,14 +25,8 @@ def run():
     print("10 Stations Furthest From Cambridge:",furthest_stations)
     print("10 Stations Closest to Cambridge:",closest_stations)
 
-<<<<<<< HEAD
-if __name__ == "__main__":
-    print("*** Task 1A: CUED Part IA Flood Warning System ***")
-    run()    
-=======
 
 if __name__ == "__main__":
     print("*** Task 1B: CUED Part IA Flood Warning System ***")
     run()
         
->>>>>>> 1d02fc1dce08ac2f2166567b785d437d78abc5ae

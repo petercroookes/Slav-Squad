@@ -1,5 +1,6 @@
-from floodsystem.stationdata import build_station_list
+from floodsystem.stationdata import *
 from floodsystem.geo import *
+
 
 def test_distance_conversion():
     assert round(distance_conversion((0.1,0.2),(0.5,0.6)),1) == 63
@@ -39,4 +40,26 @@ def test_stations_next_to_river():
 test_distance_conversion()
 test_stations_by_distance()
 test_stations_next_to_river()
+
+
 test_stations_within_radius()
+
+def test_rivers_with_station():
+    # Create a station
+    s_id = "test-s-id"
+    m_id = "test-m-id"
+    label = "some station"
+    coord = (-2.0, 4.0)
+    typical_range = (1.0)
+    town = "MyTown"
+
+    RiverA = "RiverA"
+    RiverB = "RiverB"
+
+    Station1 = MonitoringStation(s_id, m_id, label, coord, typical_range, RiverA, town)
+    Station2 = MonitoringStation(s_id, m_id, label, coord, typical_range, RiverB, town)
+    Station3 = MonitoringStation(s_id, m_id, label, coord, typical_range, RiverA, town)
+
+    stations_examples = [Station1, Station2, Station3]
+
+    assert isinstance(rivers_with_station(stations_examples), set) == True
