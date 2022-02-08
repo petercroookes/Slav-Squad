@@ -5,7 +5,6 @@ from floodsystem.stationdata import build_station_list
 def run1():
     stations = build_station_list()
     sorted_rivers_with_station = sorted(rivers_with_station(stations))
-    print(sorted_rivers_with_station)
     print("Number of Rivers with at Least 1 River Station:", len(sorted_rivers_with_station))
     print("The first 10 are:")
     print(sorted_rivers_with_station[:10])

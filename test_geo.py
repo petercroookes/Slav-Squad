@@ -58,17 +58,17 @@ def test_rivers_with_station():
 
 def test_rivers_by_station_number():
     stations = build_station_list()
-    n = 9
+    N = 9
     output = stations_next_to_river(stations)
     assert type(output) == type(dict())
     output = stations_next_to_river(stations)
     river_numbers = []
     for river_name, numbers in output.items():
-        tuple = (river_name, len(numbers))
-        assert type(tuple) == type(tuple())
-        assert len(tuple) == 2
-        assert len(river_numbers) == len(output)
-        river_numbers.append(tuple)
+        river_tuple = (river_name, len(numbers))
+        assert type(river_tuple) == type(tuple())
+        assert len(river_tuple) == 2
+        river_numbers.append(river_tuple)
+    assert len(river_numbers) == len(output)
     river_numbers = sorted(river_numbers, key = lambda x: x[1], reverse = True)
     assert river_numbers[0][1] > river_numbers[-1][1]
     river_N_numbers = river_numbers[:N]
@@ -79,7 +79,7 @@ def test_rivers_by_station_number():
     assert type(river_numbers[0][1]) == type(int())
     assert type(river_N_numbers[-1][1]) == type(int())
     for river in river_numbers:
-        if river[1] == river_N_numbers[N-1][1] :
+        if river[1] == river_N_numbers[N-1][1]:
             river_N_numbers.append(river)
     return river_N_numbers
-
+test_rivers_by_station_number()
