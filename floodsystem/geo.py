@@ -65,12 +65,6 @@ def stations_by_distance(stations, p):
 
 from math import pi, sin, cos, acos
 
-# from sklearn.decomposition import DictionaryLearning
-
-
-
-
-
 def stations_within_radius(stations, centre, r):
     # Creat empty list
     output = []
