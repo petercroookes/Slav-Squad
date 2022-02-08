@@ -1,5 +1,5 @@
 from numpy import integer
-from sympy import N
+# from sympy import N
 from floodsystem.stationdata import *
 from floodsystem.geo import *
 
