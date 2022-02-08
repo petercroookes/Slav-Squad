@@ -31,10 +31,8 @@ def test_stations_within_radius():
 def test_stations_next_to_river():
     # Create a list of stations using real data.
     stations = build_station_list()
-    # Run the function on the real data, which should create a dictionary with the river as a key and a list of 
-    # stations next to that river as the corresponding values. 
     river_dict = stations_next_to_river(stations)
-    # Checks th
+    # Checks that the function produces a dictionary.
     assert isinstance(river_dict, dict) == True
 
 def test_rivers_with_station():
