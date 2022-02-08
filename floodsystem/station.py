@@ -39,7 +39,7 @@ class MonitoringStation:
         d += "   typical range: {}".format(self.typical_range)
         return d
 
-        
+    # Check that the typical range values for a river are valid (lower value must be less than higher value)   
     def typical_range_consistent(self):
         if self.typical_range == None:
             return False
@@ -48,7 +48,7 @@ class MonitoringStation:
         else:
             return False
 
-
+# Create a list for stations that do not have conistent typical ranges.
 def inconsistent_typical_range_stations(stations):
     inconsistent_data_list = []
     for station in stations:
