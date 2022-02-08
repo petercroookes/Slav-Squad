@@ -8,6 +8,7 @@ def run():
     # Sort this list alphabetically and print it.
     data_list_names.sort()
     print(data_list_names)
+    print(stations)
 
 if __name__ == "__main__":
     print("*** Task 1F: CUED Part IA Flood Warning System ***")
