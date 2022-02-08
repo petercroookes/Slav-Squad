@@ -55,10 +55,6 @@ from math import pi, sin, cos, acos
 
 from sklearn.decomposition import DictionaryLearning
 
-
-
-
-
 def stations_within_radius(stations, centre, r):
     output = []
     for station in stations:
@@ -78,6 +74,14 @@ def stations_next_to_river(stations):
     return output
 
 
+def rivers_with_station(stations):
+    river_set = []
+    for n in stations:
+        river_set.append(n.river)
+    
+    return set(river_set)
+
+
 def rivers_by_station_number(stations, N):
     output = dict()
     for station in stations:
@@ -85,12 +89,6 @@ def rivers_by_station_number(stations, N):
             output[station.river].append(station.name)
         else:
             output[station.river] = [station.name]
-    rivers = []
-    for station in stations:
-        if station.river in rivers:
-            pass
-        else:
-            rivers.append(station.river)
     river_numbers = []
     for river_name, numbers in output.items():
         tuple = (river_name, len(numbers))
@@ -103,21 +101,5 @@ def rivers_by_station_number(stations, N):
             river_N_numbers.append(river)
     return river_N_numbers
 
-def rivers_with_station(stations):
-    river_set = []
-    for n in stations:
-        river_set.append(n.river)
-    
-    return set(river_set)
 
-def stations_by_river(stations):
-    river_station_dictionary = {}
-    for n in rivers_with_station(stations):
-        stations_on_river = []
-        for i in stations:
-            if i.river == n:
-                stations_on_river.append(i.name)
-    
-        river_station_dictionary[n] = stations_on_river
 
-    return river_station_dictionary
