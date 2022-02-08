@@ -1,3 +1,5 @@
+from numpy import integer
+from sympy import N
 from floodsystem.stationdata import *
 from floodsystem.geo import *
 
@@ -21,20 +23,10 @@ def test_stations_within_radius():
 def test_stations_next_to_river():
     stations = build_station_list()
     river_dict = stations_next_to_river(stations)
-    #print(river_dict.keys()
+    #print(river_dict.keys())
     for i in river_dict.keys():
         for j in river_dict[i]:
-            for station in stations:
-                if station.name == j:
-                    temp = station
-                    break
             print(j)
-            print(temp.river, i)
-            if temp.river == i:
-                print("1")
-            else:
-                print("0")
-            
 
 
 test_distance_conversion()
@@ -63,3 +55,31 @@ def test_rivers_with_station():
     stations_examples = [Station1, Station2, Station3]
 
     assert isinstance(rivers_with_station(stations_examples), set) == True
+
+def test_rivers_by_station_number():
+    stations = build_station_list()
+    n = 9
+    output = stations_next_to_river(stations)
+    assert type(output) == type(dict())
+    output = stations_next_to_river(stations)
+    river_numbers = []
+    for river_name, numbers in output.items():
+        tuple = (river_name, len(numbers))
+        assert type(tuple) == type(tuple())
+        assert len(tuple) == 2
+        assert len(river_numbers) == len(output)
+        river_numbers.append(tuple)
+    river_numbers = sorted(river_numbers, key = lambda x: x[1], reverse = True)
+    assert river_numbers[0][1] > river_numbers[-1][1]
+    river_N_numbers = river_numbers[:N]
+    assert len(river_N_numbers) == N
+    river_numbers = river_numbers[N:]
+    assert type(river_numbers[0]) == type(tuple())
+    assert type(river_N_numbers[-1]) == type(tuple())
+    assert type(river_numbers[0][1]) == type(int())
+    assert type(river_N_numbers[-1][1]) == type(int())
+    for river in river_numbers:
+        if river[1] == river_N_numbers[N-1][1] :
+            river_N_numbers.append(river)
+    return river_N_numbers
+
