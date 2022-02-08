@@ -89,6 +89,8 @@ def rivers_by_station_number(stations, N):
             output[station.river].append(station.name)
         else:
             output[station.river] = [station.name]
+    rivers = []
+
     river_numbers = []
     for river_name, numbers in output.items():
         tuple = (river_name, len(numbers))

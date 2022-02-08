@@ -20,10 +20,20 @@ def test_stations_within_radius():
 def test_stations_next_to_river():
     stations = build_station_list()
     river_dict = stations_next_to_river(stations)
-    #print(river_dict.keys())
+    #print(river_dict.keys()
     for i in river_dict.keys():
         for j in river_dict[i]:
+            for station in stations:
+                if station.name == j:
+                    temp = station
+                    break
             print(j)
+            print(temp.river, i)
+            if temp.river == i:
+                print("1")
+            else:
+                print("0")
+            
 
 
 test_distance_conversion()
