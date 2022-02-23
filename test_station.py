@@ -93,3 +93,14 @@ def test_inconsistent_typical_range_stations():
     # Check that the subsequent list produced by the function inconsistent_typical_range_stations contains
     # all of the incorrect examples and none of the correct examples.
     assert inconsistent_typical_range_stations(station_examples) == [incorrect1,incorrect2,incorrect3]
+
+def test_relative_water_level():
+    # Create a station
+    s_id = "test-s-id"
+    m_id = "test-m-id"
+    label = "some station"
+    coord = (-2.0, 4.0)
+    trange = (-2.3, 3.4445)
+    river = "River X"
+    town = "My Town"
+    s = MonitoringStation(s_id, m_id, label, coord, trange, river, town)

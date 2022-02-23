@@ -6,7 +6,6 @@ for manipulating/modifying station data
 
 """
 
-
 class MonitoringStation:
     """This class represents a river level monitoring station"""
 
@@ -47,6 +46,22 @@ class MonitoringStation:
             return True
         else:
             return False
+    
+     
+    def relative_water_level(self):
+        """This function returns the relative water level, given by the ratio of the water level minus the minimum to the 
+        typical range i.e. a ratio of 1.0 corresponds to a level at the typical high and a ratio of 0.0 corresponds 
+        to a level at the typical low """
+
+        # Ignore stations with inconsistent or missing data.
+        if self.typical_range_consistent == False or self.typical_range == None or self.latest_level == None:
+            return None
+        # Return the ratio, check if it is between 0 and 1.
+        else:
+            rel_level = (self.latest_level - self.typical_range[0])/(self.typical_range[1] - self.typical_range[0])
+            return rel_level
+            
+
 
 # Create a list for stations that do not have conistent typical ranges.
 def inconsistent_typical_range_stations(stations):
@@ -55,3 +70,6 @@ def inconsistent_typical_range_stations(stations):
         if station.typical_range_consistent() == False:
             inconsistent_data_list.append(station)
     return inconsistent_data_list
+
+
+
