@@ -49,18 +49,22 @@ class MonitoringStation:
     
      
     def relative_water_level(self):
-        """This function returns the relative water level, given by the ratio of the water level minus the minimum to the 
-        typical range i.e. a ratio of 1.0 corresponds to a level at the typical high and a ratio of 0.0 corresponds 
-        to a level at the typical low """
-
-        # Ignore stations with inconsistent or missing data.
-        if self.typical_range_consistent == False or self.typical_range == None or self.latest_level == None:
-            return None
-        # Return the ratio, check if it is between 0 and 1.
+        """This function returns the relative water level, given by the ratio of the latest water level 
+        minus the typical minimum to the typical range i.e. a ratio of 1.0 corresponds to a level at the 
+        typical high and a ratio of 0.0 corresponds to a level at the typical low """
+        # If the typical range is consistent, it calculates the ratio, and if this causes an error e.g. 
+        # a NoneType error, it creates an exception and returns None. Otherwise, it returns the ratio, and
+        # and if the range is not consistent, it returns None.      
+        if self.typical_range_consistent() == True:
+            try:
+                ratio = (self.latest_level - self.typical_range[0])/(self.typical_range[1]-self.typical_range[0])
+            except TypeError:
+                return None
+        # Filter out anomalous values.
+            if ratio < 100:
+                return ratio
         else:
-            rel_level = (self.latest_level - self.typical_range[0])/(self.typical_range[1] - self.typical_range[0])
-            return rel_level
-            
+            return None
 
 
 # Create a list for stations that do not have conistent typical ranges.
