@@ -28,5 +28,3 @@ def stations_highest_rel_level(stations, N):
     rel_level_list = stations_level_over_threshold(stations, 0)
     biggest_n = rel_level_list[:N]
     return biggest_n
-        
-        

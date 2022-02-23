@@ -9,11 +9,13 @@ def run():
     stations = build_station_list()
     update_water_levels(stations)
     sorted_stations = stations_highest_rel_level(stations, 5)
+    sorted_stations = sorted(((station, station.relative_water_level()) for station in stations if station.relative_water_level() != None), key = lambda x: x[1], reverse = True)[:5]
     for i in sorted_stations:
-        name = i[0]
-        delta_t = 10
-        dates, levels = fetch_measure_levels(name.measure_id, delta_t = datetime.timedelta(dates = delta_t))
-        plot_water_levels(stations, dates, levels)
+        station_info = i[0]
+        print(station_info)
+        dt = 10
+        dates, levels = fetch_measure_levels(station_info.measure_id, dt = datetime.timedelta(dt))
+        plot_water_levels(station_info, dates, levels)
 
 if __name__ == "__main__":
     print("*** Task 2E: CUED Part IA Flood Warning System ***")
