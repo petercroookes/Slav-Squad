@@ -12,7 +12,6 @@ def run():
     sorted_stations = sorted(((station, station.relative_water_level()) for station in stations if station.relative_water_level() != None), key = lambda x: x[1], reverse = True)[:5]
     for i in sorted_stations:
         station_info = i[0]
-        print(station_info)
         dt = 10
         dates, levels = fetch_measure_levels(station_info.measure_id, dt = datetime.timedelta(dt))
         plot_water_levels(station_info, dates, levels)
