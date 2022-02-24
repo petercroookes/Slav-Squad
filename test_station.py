@@ -95,3 +95,36 @@ def test_inconsistent_typical_range_stations():
     # all of the incorrect examples and none of the correct examples.
     assert inconsistent_typical_range_stations(station_examples) == [incorrect1,incorrect2,incorrect3]
 
+def test_relative_water_level():
+    # Create a station with arbitrary properties.
+    s_id = "test-s-id"
+    m_id = "test-m-id"
+    label = "some station"
+    coord = (-2.0, 4.0)
+    river = "River X"
+    town = "My Town"
+
+    # Test a station with consistent range that should return a relative water level of 1.
+    correct_typical_range1 = (0,2)
+    test_station1 = MonitoringStation(s_id, m_id, label, coord, correct_typical_range1, river, town)
+    test_station1.latest_level = 2
+    assert test_station1.relative_water_level() == 1.00
+
+    # Test a station with consistent range that should return a relative water level of 0.
+    correct_typical_range2 = (3.0,5.0)
+    test_station2 = MonitoringStation(s_id, m_id, label, coord, correct_typical_range2, river, town)
+    test_station2.latest_level = 3.0
+    assert test_station2.relative_water_level() == 0.0
+
+    # Test a station with consistent range that should return a None for the water level if the 
+    # latest level is None.
+    correct_typical_range3 = (4.5,6.5)
+    test_station3 = MonitoringStation(s_id, m_id, label, coord, correct_typical_range3, river, town)
+    test_station3.latest_level == None
+    assert test_station3.relative_water_level() == None
+
+    # Test a station with inconsistent range that should return a None for the water level no matter the latest level.
+    incorrect_typical_range1 = (8.5,6.5)
+    test_station4 = MonitoringStation(s_id, m_id, label, coord, incorrect_typical_range1, river, town)
+    test_station4.latest_level == 7.5
+    assert test_station4.relative_water_level() == None
