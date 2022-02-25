@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import matplotlib.dates
 from datetime import datetime, timedelta
-from floodsystem.analysis import polyfit
+from analysis import *
 
 def plot_water_levels(station, dates, levels):
     plt.plot(dates, levels)
