@@ -49,3 +49,10 @@ def test_stations_highest_rel_level():
     for n in range(1,len(biggest_ten)):
         assert isinstance(biggest_ten[n],tuple)
         assert biggest_ten[n][1] <= biggest_ten[n-1][1]
+
+def test_stations_highest_rel_level():
+    stations = build_station_list()
+    update_water_levels(stations)
+    highest_level_list = stations_highest_rel_level(stations, 10)
+    assert len(highest_level_list) == 10
+    assert sorted(highest_level_list, key = lambda x: x[1], reverse=True) == highest_level_list
