@@ -11,9 +11,13 @@ def run():
 
     # Produce list of 10 stations with largest relative water level
     Largest_Ten = stations_highest_rel_level(stations, 10)
+    Largest_Ten_name_and_level = []
+    for n in range(len(Largest_Ten)):
+        name = Largest_Ten[n][0].name
+        level = Largest_Ten[n][1]
+        Largest_Ten_name_and_level.append((name, level))
+    print(Largest_Ten_name_and_level)
 
-    # Print
-    print(Largest_Ten)
 
 if __name__ == "__main__":
     print("\n*** Task 2C: CUED Part IA Flood Warning System ***")

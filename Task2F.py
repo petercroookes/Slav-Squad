@@ -15,14 +15,12 @@ def run():
         station  = i[0]
         dt = 2
         dates, levels = fetch_measure_levels(station.measure_id, dt = datetime.timedelta(days = dt))
-        try:
-            low = [station.typical_range[0]*len(levels)]
-            high = [station.typical_range[1]*len(levels)]
-            plt.plot(dates, low)
-            plt.plot(dates, high)
-            plot_water_level_with_fit(station, dates, levels, 4)
-        except:
-            pass
+        high_level = [station.typical_range[0]]*len(levels)
+        low_level = [station.typical_range[1]]*len(levels)
+        plt.plot(dates, high_level)
+        plt.plot(dates, low_level)
+        
+        plot_water_level_with_fit(station, dates, levels, 4)
 
 if __name__ == "__main__":
     print("*** Task 2F: CUED Part IA Flood Warning System ***")

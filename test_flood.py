@@ -29,8 +29,8 @@ def test_stations_level_over_threshold():
     # Assert that the length of the list is 2, as only two test stations have a relative water level above the threshold
     # and assert that it is ordered in descending order.
     assert len(test_stations_over_threshold) == 2
-    assert test_stations_over_threshold[0][0] == test_station3.name
-    assert test_stations_over_threshold[1][0] == test_station2.name
+    assert test_stations_over_threshold[0][0] == test_station3
+    assert test_stations_over_threshold[1][0] == test_station2
 
 def test_stations_highest_rel_level():
     # Build a stations list using real data, and update all of their water levels.
