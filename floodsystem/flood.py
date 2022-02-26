@@ -15,10 +15,11 @@ def stations_level_over_threshold(stations, tol):
         rel_level = n.relative_water_level()
         
         if rel_level != None and rel_level > tol:
-            station = (n, rel_level)
+            station = (n.name, rel_level)
             stations_over_threshold.append(station)
     
     sorted_list = sorted_by_key(stations_over_threshold, 1, reverse=True)
+
 
     return sorted_list
 

@@ -135,6 +135,7 @@ def fetch_measure_levels(measure_id, dt):
 
         # Append data
         dates.append(d)
+#        print(len(measure))
         levels.append(measure['value'])
 
     return dates, levels
