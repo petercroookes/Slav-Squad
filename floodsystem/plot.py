@@ -3,6 +3,8 @@ import matplotlib.dates
 from datetime import datetime, timedelta
 from .analysis import *
 
+# Both build a station list using real data, pick a random station from the list, run the function to produce a graph,
+# and we check whether they are reasonable.
 def plot_water_levels(station, dates, levels):
     plt.plot(dates, levels)
     high_level = [station.typical_range[0]]*len(levels)
