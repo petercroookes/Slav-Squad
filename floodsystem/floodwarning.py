@@ -7,7 +7,7 @@ def floodwarning(stations):
     ordered = []
     for station in stations:
         if station.relative_water_level() != None:
-            if station.relative_water_level() > 0.5:
+            if station.relative_water_level() > 1:
                 dates, levels = fetch_measure_levels(station.measure_id, dt = datetime.timedelta(days = 1))
                 if len(levels) > 0:    
                     level_change = levels[len(levels)-1] - levels[0]
